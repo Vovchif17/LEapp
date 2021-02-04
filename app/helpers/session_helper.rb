@@ -21,6 +21,10 @@ module SessionHelper
     end
   end
 
+  def current_user?(user)
+    user && user == current_user
+  end
+
   def forget(user)
     user.forget
     cookies.delete(:user_id)
@@ -35,5 +39,18 @@ module SessionHelper
     forget(current_user)
     session.delete(:user_id)
     @current_user = nil
+  end
+
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user)
+  end
+
+  def redirect_back_or(default)
+    redirect_to(session[:forwarding_url] || default)
+  end
+
+  def store_location
+    session[:forwarding_url] = require.original_url if require.get?
   end
 end
