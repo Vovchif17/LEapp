@@ -6,6 +6,7 @@ ruby '2.7.2'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 gem 'puma', '~> 4.1'
 gem 'faker', '2.1.2'
+gem 'active_storage_validations'
 gem 'sass-rails', '>= 6'
 gem 'webpacker'
 gem 'turbolinks', '~> 5'
@@ -17,6 +18,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'annotate'
+gem 'image_processing'
+gem 'mini_magick'
 
 group :development, :test do
   gem 'sqlite3', '~> 1.4'
